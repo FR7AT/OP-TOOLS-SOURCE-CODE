@@ -1,0 +1,1480 @@
+﻿<Window x:Class="OP_TOOLS.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="OP TOOLS"
+        Height="522"
+        Width="800"
+        ResizeMode="CanMinimize" 
+        Background="{DynamicResource MaterialDesignPaper}"
+        WindowStartupLocation="CenterScreen" Icon="OP.png">
+    
+    <Grid>
+        <DockPanel>
+
+            <StackPanel Width="180" Background="#0a0b0f" VerticalAlignment="Stretch">
+                
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,20,10,20">
+                    <TextBlock x:Name="AnimatedTextBlock" FontSize="25" FontWeight="Bold">
+                        <TextBlock.Foreground>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="White" Offset="0" />
+                                <GradientStop Color="#0088FF" Offset="0.5" x:Name="BlueGradientStop" />
+                                <GradientStop Color="White" Offset="1" />
+                            </LinearGradientBrush>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                </Grid>
+
+                <ListBox Background="#0a0b0f" BorderThickness="0" Padding="0" SelectionChanged="ListBox_SelectionChanged">
+                    
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="1">
+                                            <ContentPresenter HorizontalAlignment="Stretch"
+                                                  VerticalAlignment="Center" />
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="Foreground" Value="#ECF0F1" />
+                            <Setter Property="Cursor" Value="Hand" />
+                            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#1F2933" />
+                                    <Setter Property="Foreground" Value="#FFFFFF" />
+                                    <Setter Property="BorderBrush" Value="#0088FF" />
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="#1B1F24" />
+                                    <Setter Property="Foreground" Value="#00C4FF" />
+                                    <Setter Property="BorderBrush" Value="#00A1FF" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+
+                    <ListBoxItem Tag="HomePage" Height="81" Padding="1">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <materialDesign:PackIcon Kind="Home" Width="40" Height="40" Foreground="#ECF0F1" Margin="10"/>
+                            <TextBlock Text="Home" VerticalAlignment="Center" Foreground="#ECF0F1" FontSize="18"/>
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <ListBoxItem Tag="GameLoopPage" Height="81" Padding="1">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <materialDesign:PackIcon Kind="GamepadVariant" Width="40" Height="40" Foreground="#ECF0F1" Margin="10"/>
+                            <TextBlock Text="GameLoop" VerticalAlignment="Center" Foreground="#ECF0F1" FontSize="18"/>
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <ListBoxItem Tag="AndroidPage" Height="81" Padding="1">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <materialDesign:PackIcon Kind="Android" Width="40" Height="40" Foreground="#ECF0F1" Margin="10"/>
+                            <TextBlock Text="Android" VerticalAlignment="Center" Foreground="#ECF0F1" FontSize="18"/>
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <ListBoxItem Tag="SystemPage" Height="81" Padding="1">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <materialDesign:PackIcon Kind="Cogs" Width="40" Height="40" Foreground="#ECF0F1" Margin="10"/>
+                            <TextBlock Text="System" VerticalAlignment="Center" Foreground="#ECF0F1" FontSize="18"/>
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <ListBoxItem Tag="ProgramsPage" Height="81" Padding="1">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <materialDesign:PackIcon Kind="Application" Width="40" Height="40" Foreground="#ECF0F1" Margin="10"/>
+                            <TextBlock Text="Programs" VerticalAlignment="Center" Foreground="#ECF0F1" FontSize="18"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                
+                </ListBox>
+
+                <StackPanel.Triggers>
+                    
+                    <EventTrigger RoutedEvent="Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <StringAnimationUsingKeyFrames Storyboard.TargetName="AnimatedTextBlock" Storyboard.TargetProperty="Text">
+                                    <DiscreteStringKeyFrame Value="" KeyTime="0:0:0" />
+                                    <DiscreteStringKeyFrame Value="O" KeyTime="0:0:0.2" />
+                                    <DiscreteStringKeyFrame Value="OP" KeyTime="0:0:0.4" />
+                                    <DiscreteStringKeyFrame Value="OP " KeyTime="0:0:0.6" />
+                                    <DiscreteStringKeyFrame Value="OP T" KeyTime="0:0:0.8" />
+                                    <DiscreteStringKeyFrame Value="OP TO" KeyTime="0:0:1.0" />
+                                    <DiscreteStringKeyFrame Value="OP TOO" KeyTime="0:0:1.2" />
+                                    <DiscreteStringKeyFrame Value="OP TOOL" KeyTime="0:0:1.4" />
+                                    <DiscreteStringKeyFrame Value="OP TOOLS" KeyTime="0:0:1.6" />
+                                </StringAnimationUsingKeyFrames>
+
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                
+                </StackPanel.Triggers>
+            
+            </StackPanel>
+
+            <Grid>
+                
+                <Grid x:Name="HomePage" Visibility="Visible" Background="#242424">
+                    <Image Source="pack://application:,,,/Images/Home.png" Stretch="UniformToFill" />
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,15,10,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="VersionTextBlock" Grid.Column="0" FontSize="12" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+                        <TextBlock x:Name="DeveloperTextBlock" Grid.Column="1" FontSize="12" FontWeight="Bold" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top" Text="Dev By : Farhat" />
+                    </Grid>
+                </Grid>
+
+                <Grid x:Name="GameLoopPage" Visibility="Collapsed" Background="#242424">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Row="0" Grid.Column="0" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        ToolTip="ينسخ الموارد إلى الشير 1 ويجب يكون المحاكي شغال" Click="PaksOut_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="ArrowLeftBoldCircle" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="Paks Out" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <ComboBox Grid.Row="0" Grid.Column="1" Width="180" Height="50" Margin="10"
+          FontSize="14" FontWeight="Bold" Foreground="White" Background="#31384E"
+          HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+          ToolTip="اختر نسخة ببجي" SelectionChanged="ComboBox_SelectionChanged">
+                        <ComboBox.Template>
+                            <ControlTemplate TargetType="ComboBox">
+                                <Grid>
+                                    <Border x:Name="border" Background="#31384E" CornerRadius="8"
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <Grid>
+                                            <ContentPresenter Content="{TemplateBinding SelectionBoxItem}"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Left"
+                                          Margin="10,0,10,0" />
+                                            <ToggleButton x:Name="DropDownToggle" Background="Transparent" BorderThickness="0"
+                                      IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                      HorizontalAlignment="Right" VerticalAlignment="Center" Width="30" Height="30" Cursor="Hand">
+                                                <Grid>
+                                                    <Path Data="M 0 0 L 4 4 L 8 0 Z"
+                                      Fill="White" Stretch="Uniform" Width="12" Height="12"
+                                      VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                                </Grid>
+                                            </ToggleButton>
+                                        </Grid>
+                                    </Border>
+                                    <Popup x:Name="PART_Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}"
+                       AllowsTransparency="True" PopupAnimation="Slide" StaysOpen="False">
+                                        <Border Background="White" CornerRadius="8" BorderBrush="#0078D7" BorderThickness="1"
+                            MinWidth="{Binding ActualWidth, ElementName=border}">
+                                            <ScrollViewer>
+                                                <ItemsPresenter />
+                                            </ScrollViewer>
+                                        </Border>
+                                    </Popup>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsDropDownOpen" Value="True">
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#00BCD4" />
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#6E6E6E" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </ComboBox.Template>
+
+                        <ComboBoxItem Content="Select Version" IsSelected="True" IsEnabled="False" Foreground="Black" />
+                        <ComboBoxItem Content="Global" Foreground="Black" />
+                        <ComboBoxItem Content="Korea" Foreground="Black" />
+                        <ComboBoxItem Content="Taiwan" Foreground="Black" />
+                        <ComboBoxItem Content="Vietnam" Foreground="Black" />
+                    </ComboBox>
+
+                    <Button Grid.Row="0" Grid.Column="2" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        ToolTip="ينسخ الموارد من الشير 1 إلى اللعبة ويجب يكون المحاكي شغال" Click="PaksIn_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="ArrowRightBoldCircle" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="Paks In" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Grid.Row="1" Grid.Column="0" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        ToolTip="يقوم بفتح المحاكي" Click="OpenGameloop_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="OpenInApp" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="Open Gameloop" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Grid.Row="1" Grid.Column="1" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        ToolTip="يقوم بإغلاق المحاكي" Click="KillGameloop_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="Power" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="Kill Gameloop" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Grid.Row="1" Grid.Column="2" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        ToolTip="اصلاح مشكلة 98" Click="FixGameloop_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="Wrench" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="Fix 98% Gameloop" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Grid.Row="2" Grid.Column="0" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        ToolTip="تعديل دقة ببجي الكورية إلى 1080 ويجب يكون والمحاكي مغلق" Click="P1080P_Korea_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="Monitor" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="1080p Pubg Korea" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Grid.Row="2" Grid.Column="1" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        ToolTip="تشغيل جميع أزرار تحكم الكورية" Click="Key_Keymap_Kr_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="Keyboard" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="Key Keymap Kr" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Grid.Row="2" Grid.Column="2" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        ToolTip="إرجاع التحكم الأصلي الخاص بالمحاكي" Click="Key_Keymap_Gl_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="SettingsBackupRestore" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="Key Keymap Gl" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Grid.Row="3" Grid.Column="0" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        ToolTip="تنظيف اللعبة ويجب يكون المحاكي شغال" Click="CleanPubg_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="Tools" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="Clean Pubg Mobile" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Grid.Row="3" Grid.Column="1" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        ToolTip="فك حظر الجهاز أو المحاكي" Click="FixBanGameloop_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="ShieldOff" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="Fix Ban Gameloop" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Grid.Row="3" Grid.Column="2" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        ToolTip="رسترت الجيست ويجب يكون المحاكي شغال" Click="ResetGuest_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="Refresh" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="Reset Guest Pubg" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                </Grid>
+
+                <Grid x:Name="AndroidPage" Visibility="Collapsed" Background="#242424">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="2*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <ProgressBar x:Name="AndroidFileDownloadProgressBar" Grid.Row="0" Grid.ColumnSpan="5" Height="10" Value="0" Margin="20,10,20,10" Visibility="Hidden" />
+
+                    <Button x:Name="Button1" Grid.Row="2" Grid.Column="1" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        Visibility="Collapsed"
+        ToolTip="Update Lib Anogs Offset" Click="opfarhatAnogs_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="Wrench" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="Libanogs.so" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Grid.Row="2" Grid.Column="2" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        ToolTip="تثبيت تطبيق ويجب أن يكون التطبيق بجانب الأداة والمحاكي شغال" Click="InstallApkButton_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="PackageDown" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="Install Apk" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button x:Name="Button2" Grid.Row="2" Grid.Column="3" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        Visibility="Collapsed"
+        ToolTip="Update Lib Ue4 Offset" Click="opfarhatUe4_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="Wrench" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="Libue4.so" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button x:Name="Button3" Grid.Row="1" Grid.Column="1" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        Visibility="Collapsed"
+        ToolTip="يقوم بإغلاق المحاكي" Click="KillGameloop_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="Power" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="Kill Gameloop" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button x:Name="Button4" Grid.Row="1" Grid.Column="3" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        Visibility="Collapsed"
+        ToolTip="يقوم بفتح المحاكي" Click="opfarhatOpenGameloop_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="OpenInApp" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="Open Gameloop" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <ScrollViewer Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" Height="Auto" VerticalScrollBarVisibility="Auto" Margin="0,80,0,10">
+                        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,10">
+
+                            <StackPanel Width="100" Height="130" Margin="5" MouseLeftButtonUp="DownloadGameloop_Click" Cursor="Hand">
+                                <Border Background="#1F2633" CornerRadius="50" Width="70" Height="70" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                    <Border.Effect>
+                                        <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                    </Border.Effect>
+                                    <Image Source="pack://application:,,,/Images/GameLoop.png" Width="40" Height="40" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <TextBlock Text="Gameloop" FontSize="12" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold" />
+                            </StackPanel>
+
+                            <StackPanel Width="100" Height="130" Margin="5" MouseLeftButtonUp="DownloadApkPure_Click" Cursor="Hand">
+                                <Border Background="#1F2633" CornerRadius="50" Width="70" Height="70" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                    <Border.Effect>
+                                        <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                    </Border.Effect>
+                                    <Image Source="pack://application:,,,/Images/APKPure.png" Width="40" Height="40" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <TextBlock Text="ApkPure" FontSize="12" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold" />
+                            </StackPanel>
+
+                            <StackPanel Width="100" Height="130" Margin="5" MouseLeftButtonUp="DownloadFXFile_Click" Cursor="Hand">
+                                <Border Background="#1F2633" CornerRadius="50" Width="70" Height="70" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                    <Border.Effect>
+                                        <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                    </Border.Effect>
+                                    <Image Source="pack://application:,,,/Images/Fx_File.png" Width="40" Height="40" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <TextBlock Text="FX File" FontSize="12" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold" />
+                            </StackPanel>
+
+                            <StackPanel Width="100" Height="130" Margin="5" MouseLeftButtonUp="DownloadArabicKd_Click" Cursor="Hand">
+                                <Border Background="#1F2633" CornerRadius="50" Width="70" Height="70" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                    <Border.Effect>
+                                        <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                    </Border.Effect>
+                                    <Image Source="pack://application:,,,/Images/Arabic_Keyboard.png" Width="40" Height="40" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <TextBlock Text="Arabic Kd" FontSize="12" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold" />
+                            </StackPanel>
+
+                            <StackPanel Width="100" Height="130" Margin="5" MouseLeftButtonUp="DownloadTwitter_Click" Cursor="Hand">
+                                <Border Background="#1F2633" CornerRadius="50" Width="70" Height="70" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                    <Border.Effect>
+                                        <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                    </Border.Effect>
+                                    <Image Source="pack://application:,,,/Images/x.png" Width="40" Height="40" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <TextBlock Text="X (Twitter)" FontSize="12" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold" />
+                            </StackPanel>
+
+                        </WrapPanel>
+                    </ScrollViewer>
+                </Grid>
+
+                <Grid x:Name="SystemPage" Visibility="Collapsed" Background="#242424">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Row="0" Grid.Column="0" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        ToolTip="إيقاف تقارير أخطاء ويندوز 10 إلى مايكروسوفت" Click="DisableReports_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="BlockHelper" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="Disable Reports" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Grid.Row="0" Grid.Column="1" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        ToolTip="تغيير الماك أدرس الخاص بك" Click="ChangeMACAddress_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="Refresh" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="Change Mac" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Grid.Row="0" Grid.Column="2" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        ToolTip="حذف ملفات الكاش الخاصة بالمتصفحات" Click="DeleteCache_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="TrashCan" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="Delete Cache" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Grid.Row="1" Grid.Column="0" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        ToolTip="رسترت للإنترنت بالكامل" Click="ResetNetwork_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="LanConnect" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="Reset Network" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Grid.Row="1" Grid.Column="1" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        ToolTip="تنظيف الهارد ديسك من الملفات المؤقتة" Click="CleanDisk_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="Harddisk" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="Clean Disk" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Grid.Row="1" Grid.Column="2" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        ToolTip="رسترت لجدار الحماية" Click="ResetFirewall_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="Security" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="Reset Firewall" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Grid.Row="2" Grid.Column="0" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        ToolTip="تنظيف ملفات التمب" Click="CleanTmp_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="FolderRemove" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="Clean Tmp" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Grid.Row="2" Grid.Column="1" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        ToolTip="إضافة ملف الهوست الأصلي" Click="AddHosts_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="PlusBox" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="Add Hosts" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Grid.Row="2" Grid.Column="2" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        ToolTip="تنظيف جميع مسارات محاكي جيم لوب" Click="CleanTencent_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="Broom" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="Clean Tencent" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Grid.Row="3" Grid.Column="0" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        ToolTip="عرض معلومات الجهاز" Click="DisplaySystemInfo_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="InformationOutline" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="System Info" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Grid.Row="3" Grid.Column="1" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        ToolTip="تحسين أداء ذاكرة الوصول العشوائي" Click="ClearRAM_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="Memory" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="Ram Booster" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Grid.Row="3" Grid.Column="2" Width="180" Height="50" Margin="10"
+        Background="#31384E" Foreground="White" FontSize="14" FontWeight="Bold"
+        ToolTip="تنظيف سجل النظام الريجستري" Click="ClearRegistry_Click"
+        Style="{StaticResource MaterialDesignRaisedButton}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8" 
+                        BorderThickness="2" BorderBrush="#0078D7">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0">
+                                            <materialDesign:PackIcon Kind="Broom" Width="25" Height="25" Margin="0,0,8,0" />
+                                            <TextBlock Text="Registry Cleaner" VerticalAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#1C2639" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#31384E" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="#0a0b0f" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#0078D7" />
+                                        <Setter Property="Foreground" Value="#6E6E6E" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                </Grid>
+
+                <Grid x:Name="ProgramsPage" Visibility="Collapsed" Background="#242424">
+                    <StackPanel>
+                        <ProgressBar x:Name="FileDownloadProgressBar" Height="10" Value="0" Margin="20,10,20,10" Visibility="Hidden" />
+
+                        <Grid>
+
+                            <Grid x:Name="ProgramsPage1" Visibility="Visible">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                    <WrapPanel Margin="20" HorizontalAlignment="Center" VerticalAlignment="Top" ItemWidth="120" ItemHeight="150">
+
+                                        <StackPanel Width="100" Margin="10" MouseLeftButtonUp="DownloadFullDriver_Click" Cursor="Hand">
+                                            <Border Background="#1F2633" CornerRadius="50" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                                </Border.Effect>
+                                                <Image Source="pack://application:,,,/Images/Full-Driver-C++.png" Width="50" Height="50" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <TextBlock Text="Full Driver" FontSize="14" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold" />
+                                        </StackPanel>
+
+                                        <StackPanel Width="100" Margin="10" MouseLeftButtonUp="DownloadAllInOne_Click" Cursor="Hand">
+                                            <Border Background="#1F2633" CornerRadius="50" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                                </Border.Effect>
+                                                <Image Source="pack://application:,,,/Images/All-in-One-Runtimes.png" Width="50" Height="50" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <TextBlock Text="All In One" FontSize="14" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold" />
+                                        </StackPanel>
+
+                                        <StackPanel Width="100" Margin="10" MouseLeftButtonUp="DownloadUpdateBlocker_Click" Cursor="Hand">
+                                            <Border Background="#1F2633" CornerRadius="50" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                                </Border.Effect>
+                                                <Image Source="pack://application:,,,/Images/Update-Blocker.png" Width="50" Height="50" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <TextBlock Text="Update Blk" FontSize="14" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold" />
+                                        </StackPanel>
+
+                                        <StackPanel Width="100" Margin="10" MouseLeftButtonUp="DownloadDirectx11_Click" Cursor="Hand">
+                                            <Border Background="#1F2633" CornerRadius="50" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                                </Border.Effect>
+                                                <Image Source="pack://application:,,,/Images/DirectX-11.png" Width="50" Height="50" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <TextBlock Text="Directx 11" FontSize="14" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold" />
+                                        </StackPanel>
+
+                                        <StackPanel Width="100" Margin="10" MouseLeftButtonUp="DownloadDirectx_Click" Cursor="Hand">
+                                            <Border Background="#1F2633" CornerRadius="50" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                                </Border.Effect>
+                                                <Image Source="pack://application:,,,/Images/DirectX.png" Width="50" Height="50" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <TextBlock Text="Directx" FontSize="14" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold"/>
+                                        </StackPanel>
+
+                                        <StackPanel Width="100" Margin="10" MouseLeftButtonUp="DownloadJava_Click" Cursor="Hand">
+                                            <Border Background="#1F2633" CornerRadius="50" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                                </Border.Effect>
+                                                <Image Source="pack://application:,,,/Images/Java.png" Width="50" Height="50" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <TextBlock Text="Java" FontSize="14" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold"/>
+                                        </StackPanel>
+
+                                        <StackPanel Width="100" Margin="10" MouseLeftButtonUp="DownloadDefender_Click" Cursor="Hand">
+                                            <Border Background="#1F2633" CornerRadius="50" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                                </Border.Effect>
+                                                <Image Source="pack://application:,,,/Images/Defender.png" Width="50" Height="50" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <TextBlock Text="Defender" FontSize="14" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold"/>
+                                        </StackPanel>
+
+                                        <StackPanel Width="100" Margin="10" MouseLeftButtonUp="DownloadUltraViewer_Click" Cursor="Hand">
+                                            <Border Background="#1F2633" CornerRadius="50" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                                </Border.Effect>
+                                                <Image Source="pack://application:,,,/Images/UltraViewer.png" Width="50" Height="50" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <TextBlock Text="UltraViewer" FontSize="14" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold"/>
+                                        </StackPanel>
+
+                                        <StackPanel Width="100" Margin="10" MouseLeftButtonUp="DownloadRevoUninstaller_Click" Cursor="Hand">
+                                            <Border Background="#1F2633" CornerRadius="50" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                                </Border.Effect>
+                                                <Image Source="pack://application:,,,/Images/Revo-Uninstaller-Pro.png" Width="50" Height="50" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <TextBlock Text="Revo" FontSize="14" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold"/>
+                                        </StackPanel>
+
+                                        <StackPanel Width="100" Margin="10" MouseLeftButtonUp="DownloadNetmodVpn_Click" Cursor="Hand">
+                                            <Border Background="#1F2633" CornerRadius="50" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                                </Border.Effect>
+                                                <Image Source="pack://application:,,,/Images/Netmod.png" Width="50" Height="50" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <TextBlock Text="Netmod Vpn" FontSize="14" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold"/>
+                                        </StackPanel>
+
+                                        <StackPanel Width="100" Margin="10" MouseLeftButtonUp="DownloadUnlocker_Click" Cursor="Hand">
+                                            <Border Background="#1F2633" CornerRadius="50" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                                </Border.Effect>
+                                                <Image Source="pack://application:,,,/Images/Unlocker.png" Width="50" Height="50" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <TextBlock Text="Unlocker" FontSize="14" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold"/>
+                                        </StackPanel>
+
+                                        <StackPanel Width="100" Margin="10" MouseLeftButtonUp="DownloadWin10Active_Click" Cursor="Hand">
+                                            <Border Background="#1F2633" CornerRadius="50" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                                </Border.Effect>
+                                                <Image Source="pack://application:,,,/Images/Win-10-Active.png" Width="50" Height="50" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <TextBlock Text="Win 10 Active" FontSize="14" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold"/>
+                                        </StackPanel>
+
+                                    </WrapPanel>
+                                </ScrollViewer>
+                                <Button Content="→" HorizontalAlignment="Right" VerticalAlignment="Top" Width="50" Height="50" Margin="0,195,10,0"
+                                Background="#1F2933" Foreground="White" FontSize="20" FontWeight="Bold" Click="NextPage_Click" />
+                            </Grid>
+                            
+                            <Grid x:Name="ProgramsPage2" Visibility="Collapsed">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                    <WrapPanel Margin="20" HorizontalAlignment="Center" VerticalAlignment="Top" ItemWidth="120" ItemHeight="150">
+
+                                        <StackPanel Width="100" Margin="10" MouseLeftButtonUp="DownloadTrafficMonitor_Click" Cursor="Hand">
+                                            <Border Background="#1F2633" CornerRadius="50" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                                </Border.Effect>
+                                                <Image Source="pack://application:,,,/Images/Traffic-Monitor.png" Width="50" Height="50" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <TextBlock Text="Traffic Mon" FontSize="14" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold"/>
+                                        </StackPanel>
+
+                                        <StackPanel Width="100" Margin="10" MouseLeftButtonUp="DownloadFaststone10_Click" Cursor="Hand">
+                                            <Border Background="#1F2633" CornerRadius="50" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                                </Border.Effect>
+                                                <Image Source="pack://application:,,,/Images/FastStone-10.png" Width="50" Height="50" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <TextBlock Text="Faststone 10" FontSize="14" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold"/>
+                                        </StackPanel>
+
+                                        <StackPanel Width="100" Margin="10" MouseLeftButtonUp="DownloadEditHosts_Click" Cursor="Hand">
+                                            <Border Background="#1F2633" CornerRadius="50" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                                </Border.Effect>
+                                                <Image Source="pack://application:,,,/Images/Edit_Hosts.png" Width="50" Height="50" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <TextBlock Text="Edit Hosts" FontSize="14" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold"/>
+                                        </StackPanel>
+
+                                        <StackPanel Width="100" Margin="10" MouseLeftButtonUp="DownloadCamtasia_Click" Cursor="Hand">
+                                            <Border Background="#1F2633" CornerRadius="50" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                                </Border.Effect>
+                                                <Image Source="pack://application:,,,/Images/Camtasia.png" Width="50" Height="50" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <TextBlock Text="Camtasia" FontSize="14" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold"/>
+                                        </StackPanel>
+
+                                        <StackPanel Width="100" Margin="10" MouseLeftButtonUp="DownloadWinrar_Click" Cursor="Hand">
+                                            <Border Background="#1F2633" CornerRadius="50" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                                </Border.Effect>
+                                                <Image Source="pack://application:,,,/Images/WinRAR.png" Width="50" Height="50" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <TextBlock Text="Winrar" FontSize="14" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold"/>
+                                        </StackPanel>
+
+                                        <StackPanel Width="100" Margin="10" MouseLeftButtonUp="DownloadShadowDefender_Click" Cursor="Hand">
+                                            <Border Background="#1F2633" CornerRadius="50" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                                </Border.Effect>
+                                                <Image Source="pack://application:,,,/Images/Shadow_defender.png" Width="50" Height="50" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <TextBlock Text="Shadow Def" FontSize="14" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold"/>
+                                        </StackPanel>
+
+                                        <StackPanel Width="100" Margin="10" MouseLeftButtonUp="DownloadCCleaner_Click" Cursor="Hand">
+                                            <Border Background="#1F2633" CornerRadius="50" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                                </Border.Effect>
+                                                <Image Source="pack://application:,,,/Images/CCleaner-Pro.png" Width="50" Height="50" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <TextBlock Text="CCleaner" FontSize="14" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold"/>
+                                        </StackPanel>
+
+                                        <StackPanel Width="100" Margin="10" MouseLeftButtonUp="DownloadMalware_Click" Cursor="Hand">
+                                            <Border Background="#1F2633" CornerRadius="50" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                                </Border.Effect>
+                                                <Image Source="pack://application:,,,/Images/Malware.png" Width="50" Height="50" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <TextBlock Text="Malware" FontSize="14" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold"/>
+                                        </StackPanel>
+
+                                        <StackPanel Width="100" Margin="10" MouseLeftButtonUp="DownloadMicrosoftXna_Click" Cursor="Hand">
+                                            <Border Background="#1F2633" CornerRadius="50" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                                </Border.Effect>
+                                                <Image Source="pack://application:,,,/Images/XNA.png" Width="50" Height="50" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <TextBlock Text="Microsoft Xna" FontSize="14" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold"/>
+                                        </StackPanel>
+
+                                        <StackPanel Width="100" Margin="10" MouseLeftButtonUp="DownloadNetFramework_Click" Cursor="Hand">
+                                            <Border Background="#1F2633" CornerRadius="50" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                                </Border.Effect>
+                                                <Image Source="pack://application:,,,/Images/NET-Framework.png" Width="50" Height="50" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <TextBlock Text="Net FW" FontSize="14" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold"/>
+                                        </StackPanel>
+
+                                        <StackPanel Width="100" Margin="10" MouseLeftButtonUp="DownloadSystemInfo_Click" Cursor="Hand">
+                                            <Border Background="#1F2633" CornerRadius="50" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                                </Border.Effect>
+                                                <Image Source="pack://application:,,,/Images/Systeminformer.png" Width="50" Height="50" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <TextBlock Text="System Info" FontSize="14" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold"/>
+                                        </StackPanel>
+
+                                        <StackPanel Width="100" Margin="10" MouseLeftButtonUp="DownloadNotepad_Click" Cursor="Hand">
+                                            <Border Background="#1F2633" CornerRadius="50" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#0078D7" BorderThickness="2">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#0078D7" BlurRadius="10" ShadowDepth="0" Opacity="0.8" />
+                                                </Border.Effect>
+                                                <Image Source="pack://application:,,,/Images/Notepad++.png" Width="50" Height="50" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <TextBlock Text="Notepad++" FontSize="14" Foreground="White" TextAlignment="Center" Margin="5,5,0,0" FontWeight="Bold"/>
+                                        </StackPanel>
+
+                                    </WrapPanel>
+                                </ScrollViewer>
+                                <Button Content="←" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="50" Margin="10,195,0,0"
+                                Background="#1F2933" Foreground="White" FontSize="20" FontWeight="Bold" Click="PreviousPage_Click" />
+                            </Grid>
+                        
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Window>
