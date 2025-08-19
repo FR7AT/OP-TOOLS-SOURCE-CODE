@@ -1,71 +1,113 @@
-# OP TOOLS SOURCE CODE
+# OP TOOLS
 
-**OP TOOLS** is a C# application developed by **FARHAT** with MetroFramework to provide a collection of tools for managing applications, performing repairs, and maintaining the system.
+**OP TOOLS** is a powerful all-in-one Windows utility built with **WPF**.  
+It simplifies system maintenance, emulator support, and includes one-click installers for essential tools — all within the Windows environment.
 
-## Key Features
-- **Application Resource Management**: Copy files to and from the emulator with multi-copy support.
-- **Emulator Management**: Start, close, or reset the emulator easily.
-- **Game Issue Fixes**: Address issues like 98% loading error and reinitialize files.
-- **System Cleanup**: Clean temporary files, GameLoop emulator paths, and system files.
-- **Network Tools**: Restart the internet connection or reset the firewall to default settings.
-- **Security Enhancements**: Block telemetry and error reporting to enhance privacy.
-- **Customization Options**: Allows users to modify emulator settings, screen resolutions, and system behavior.
-- **Advanced Tools**: Manage advanced emulator configurations and restore default settings if required.
-- **Batch Operations**: Perform batch operations for resource management or cleanup.
+---
+
+## Features
+
+### System Utilities
+- Disable Windows Error Reporting
+- Change MAC Address
+- Clean browser & system cache:
+  - Chrome, Edge, Firefox, Brave, Opera
+- Reset:
+  - Network
+  - Firewall
+  - Temporary files
+- Clean `$Recycle.Bin`, `WIN386.SWP`, Office junk, and more
+- Auto-edit the `hosts` file
+
+---
+
+### Android Tools (via ADB)
+- Install APKs directly
+- Push / Pull `Paks` folder (PUBG Mobile)
+- Enable ADB access in GameLoop
+- KeyMap fix for:
+  - Global version (`com.tencent.ig`)
+  - Korea version (`com.pubg.krmobile`)
+
+---
+
+### GameLoop Spoofing
+- Fake device identity (Samsung Galaxy Tab S10 Ultra 5G)
+- Modify FPS, rendering quality, and resolution via Registry
+
+---
+
+## Libraries & UI Framework
+
+This project uses the following UI packages via NuGet:
+
+| Library                | Version | Description                       |
+|------------------------|---------|-----------------------------------|
+| MaterialDesignThemes   | 4.3.0   | Core styling for Material Design |
+| MaterialDesignColors   | 4.3.0   | Extended color palette           |
+
+### Install via NuGet Console:
+
+Open Visual Studio → Tools → NuGet Package Manager → **Package Manager Console**  
+Run:
+
+```powershell
+Install-Package MaterialDesignThemes -Version 4.3.0
+Install-Package MaterialDesignColors -Version 4.3.0
+```
+
+---
+
+## Project Structure
+
+- `MainWindow.xaml`: WPF UI components and layout
+- `MainWindow.xaml.cs`: Main logic and features
+  - Auto updater
+  - System / Android tools
+  - Registry tweaks
+  - File downloader with progress handling
+
+---
 
 ## Requirements
-- Operating System: Windows.
-- .NET Framework 4.7.2 or higher.
-- Internet connection for version checks and updates.
 
-## Code Structure
-- **Version Check**: Automatically checks for updates at launch and allows downloading updates directly.
-- **Dynamic UI Customization**: Customizes the user interface based on attached files (e.g., `farhat.txt`).
-- **Visual Alerts and Custom Tooltips**: Provides detailed information about each button and action.
-- **Multi-threaded Operations**: Ensures smooth execution without freezing the interface.
-- **Error Handling**: Gracefully handles unexpected issues and provides meaningful error messages.
+- Visual Studio 2019 or newer
+- .NET Framework 4.7.2 or later
+- Internet connection (for update check and downloads)
 
-## Installation
-1. Download or clone the repository.
-2. Open the project in Visual Studio.
-3. Install required dependencies if necessary.
-4. Run the project using **F5**.
+---
 
-## Required Packages
-Ensure the following NuGet packages are installed in your project:
-- **MetroFramework**: For modern UI components.
-- **Guna.UI2.WinForms**: For advanced WinForms controls.
-- **Microsoft.Win32.Registry**: For registry operations.
-- **System.Net.Http**: For HTTP requests.
-- **Newtonsoft.Json**: For JSON parsing (if applicable).
+## Screenshots
 
-To install these packages, use the NuGet Package Manager in Visual Studio or run the following commands in the Package Manager Console:
-```
-Install-Package MetroFramework
-Install-Package Guna.UI2.WinForms
-Install-Package Microsoft.Win32.Registry
-Install-Package System.Net.Http
-Install-Package Newtonsoft.Json
-```
+### Main Interface
+![Main UI](images/main-ui.png)
 
-## Usage
-1. Launch the application.
-2. Use the tabs and buttons to access the embedded tools.
-3. Refer to the tooltips on the buttons for instructions.
+### GameLoop Tools Page
+![GameLoop Tools](images/gameloop-tools.png)
 
-## Advanced Features
-- **Custom Emulator Paths**: Configure custom paths for different emulator versions.
-- **Disk Cleanup**: Removes unused files and optimizes storage.
-- **Customizable Shortcuts**: Set up shortcuts for frequently used actions.
-- **Automation Support**: Allows scriptable interactions for repeated tasks.
-- **Localization**: Multilingual support for different regions.
+### Android Tools Page
+![Android Tools](images/android-tools.png)
 
-## Screenshot
-![Tool Interface](./images/Home.png)
-![Tool Interface](./images/GameLoop.png)
-![Tool Interface](./images/Android.png)
-![Tool Interface](./images/Control.png)
-![Tool Interface](./images/Cleaner.png)
-![Tool Interface](./images/Programs1.png)
-![Tool Interface](./images/Programs2.png)
-![Tool Interface](./images/Programs3.png)
+### System Tools Page
+![System Tools](images/system-tools.png)
+
+### Programs Page
+![Programs](images/programs.png)
+
+---
+
+## Notes
+
+- To unlock all features, create a file named `opfarhatfrsn.txt` in the same directory as the `.exe`  
+  Add the following content:
+  
+  ```
+  opfrsnfarhat
+  ```
+
+---
+
+## ⚠️ Disclaimer
+
+This tool is intended for **personal and educational purposes** only.  
+The developer is **not responsible** for any misuse or damage caused.
